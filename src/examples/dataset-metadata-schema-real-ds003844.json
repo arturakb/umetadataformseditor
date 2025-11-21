@@ -1,0 +1,62 @@
+{
+  "$schema": "dataset-metadata-schema-real.json",
+  "label": "ds003844",
+  "version": "1.0.3",
+  "version_date": "2021-01-01",
+  "version_info": "<p>Version 1.0.3 of the OpenNeuro dataset <strong>Clinical Epilepsy iEEG to BIDS – RESPect_intraoperative_iEEG</strong>, corresponding to the CC0-licensed public release on OpenNeuro. Exact release date should be checked against the OpenNeuro record.</p>",
+  "title": "Example RESPect Clinical Epilepsy iEEG-BIDS dataset",
+  "description": "<p><strong>Note:&nbsp;</strong>&nbsp;<u>This is just an auto-generated example! The information in this document maybe inaccurate!</u></p><p>This dataset contains intraoperative intracranial EEG (ECoG and, where applicable, SEEG) recordings from six patients with drug-resistant focal epilepsy undergoing epilepsy surgery at the University Medical Center Utrecht. The data have been curated from clinical source recordings into the iEEG-BIDS specification and include multiple intraoperative situations (pre-resection, intermediate, and post-resection recordings), along with associated metadata to support reuse in research on epilepsy, brain networks, and methods development for iEEG processing.</p>\n",
+  "purpose": "The dataset was created to provide a real-world example of how clinical intracranial EEG (iEEG) data from epilepsy surgery can be converted into the iEEG-BIDS standard, thereby promoting standardisation, transparency and reuse of clinical iEEG data. It is intended to support methodological research on BIDS workflows, validation of iEEG preprocessing and analysis pipelines, development of algorithms for seizure and event detection, and studies of effective connectivity and network properties in patients with focal epilepsy undergoing intraoperative monitoring.",
+  "disease": "epilepsy",
+  "study_design": "retrospective observational study using clinical intraoperative intracranial EEG data from patients undergoing epilepsy surgery",
+  "patient_num": 6,
+  "patient_criteria": "<h3>Inclusion criteria: </h3><ol><li><p>Patients with drug-resistant focal epilepsy who underwent epilepsy surgery at the University Medical Center Utrecht. </p></li><li><p>Surgery guided by intraoperative electrocorticography (ECoG), sometimes complemented by other intracranial EEG techniques. </p></li><li><p>Patients included in the RESPect (Registry for Epilepsy Surgery Patients) database and selected as example cases for conversion to iEEG-BIDS. </p></li><li><p>For the shared dataset, patients who provided informed consent for research use and data sharing (including sharing with other researchers and commercial parties).</p></li></ol><h3> Exclusion criteria:</h3><ol><li><p>Patients not undergoing epilepsy surgery. </p></li><li><p>Patients for whom ethical approval or consent (or consent waiver) for research use and sharing of data was not in place. </p></li><li><p>Clinical recordings that could not be sufficiently de-identified or curated into BIDS.</p></li></ol><p></p>",
+  "target_variables": "<p></p>",
+  "time_zero": "Index time corresponds to intraoperative electrocorticography (ECoG) recording periods during epilepsy surgery, logically grouped into BIDS sessions representing key surgical phases (pre-resection, intermediate, and post-resection situations). Analyses are typically anchored to the timing of intraoperative recording segments and stimulation events rather than to a long-term clinical diagnosis date.",
+  "temporal_coverage": {
+    "start_date": "2008-01-01",
+    "end_date": "2019-12-31"
+  },
+  "spatial_coverage": [
+    "NL"
+  ],
+  "source_urls": [
+    "https://openneuro.org/datasets/ds003844/versions/1.0.3"
+  ],
+  "acquisition_methods": "The data were acquired as part of routine clinical care for epilepsy surgery at the University Medical Center Utrecht. Intraoperative electrocorticography (ECoG) and, where applicable, stereo-EEG (SEEG) recordings were obtained using subdural grids, strips and depth electrodes implanted over or within cortex suspected to contain the seizure onset zone. Recordings were performed during defined surgical situations (pre-resection, intermediate and post-resection), with sampling rates and amplifier settings chosen according to clinical protocols. The raw clinical recordings were retrospectively exported, pseudo-anonymised, organised into sessions, runs and tasks, and converted into the iEEG-BIDS specification using a documented workflow and accompanying scripts.",
+  "healthcare_setting": "tertiary care epilepsy surgery centre (academic hospital)",
+  "documentation": [
+    "https://github.com/UMCU-EpiLAB/umcuEpi_acute_ieeg_respect_bids",
+    "https://github.com/UMCU-EpiLAB/umcuEpi_longterm_ieeg_respect_bids"
+  ],
+  "publications": [],
+  "data_modalities": [
+    "TS:iEEG",
+    "tabular"
+  ],
+  "privacy_compliance": "Clinical intracranial EEG data were retrospectively collected under the RESPect registry with ethics approval. All shared data have been de-identified and pseudo-anonymised before BIDS conversion. Direct identifiers were removed, subject codes were replaced by BIDS-style pseudonyms, and only information necessary for scientific reuse is retained. For the intraoperative examples, electrode coordinates in some files are set to zero to satisfy de-identification requirements while preserving the structure of the metadata. Data sharing and processing align with GDPR and local institutional policies; for patients operated between 2008 and 2017, the ethics committee granted a consent waiver, and for patients from 2018 onwards explicit informed consent for research and data sharing (including with commercial parties) was obtained.",
+  "ethics_approval": {
+    "obtained": true,
+    "obtained_date": "",
+    "register_number": "18-109",
+    "details": "Data are part of the RESPect (Registry for Epilepsy Surgery Patients) at the University Medical Center Utrecht. The registry and retrospective conversion of intracranial EEG data to BIDS were approved by the Medical Research Ethical Committee (ethical committee approval 18-109). For surgeries performed between January 2008 and December 2017 informed consent for research use was waived; from January 2018 onwards, explicit informed consent has been obtained."
+  },
+  "patient_consent": {
+    "obtained": true,
+    "obtained_date": "",
+    "details": "Patients who underwent epilepsy surgery at the University Medical Center Utrecht from 2008 onwards are included in the RESPect registry. For surgeries performed between January 2008 and December 2017, the ethics committee waived the need to obtain explicit consent for research use of de-identified data. Since January 2018, patients are explicitly asked for informed consent to collect their data for research purposes and to share de-identified data with other researchers and commercial parties. Only subjects with appropriate consent or consent waiver are included in the shared dataset."
+  },
+  "funder": "<p></p>",
+  "owner": "University Medical Center Utrecht (UMC Utrecht)",
+  "licence": "<p>CC0 1.0 Universal (Creative Commons Zero)</p>",
+  "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "doi": "10.18112/openneuro.ds003844.v1.0.3",
+  "citation": "<p>Zweiphenning W., Demuru M., van Blooijs D., Leijten F., and Zijlmans M. (2021). Dataset Clinical Epilepsy iEEG to BIDS – RESPect_intraoperative_iEEG. OpenNeuro. Version 1.0.3. doi:10.18112/openneuro.ds003844.v1.0.3.</p>",
+  "tasks": [
+    "time series analysis"
+  ],
+  "keywords": [
+    "epilepsy",
+    "iEEG"
+  ]
+}

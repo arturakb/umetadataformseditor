@@ -1,0 +1,119 @@
+{
+  "schema": "real-dataset-metadata/v1.0.0.json",
+  "label": "PTB-XL",
+  "version": "1.0.1",
+  "versionDate": "2022-11-09",
+  "title": "A Large Publicly Available Electrocardiography Dataset",
+  "summary": "<p>Electrocardiography (ECG) is a key diagnostic tool to assess the cardiac condition of a patient. Automatic ECG interpretation algorithms as diagnosis support systems promise large reliefs for the medical personnel - only on the basis of the number of ECGs that are routinely taken. However, the development of such algorithms requires large training datasets and clear benchmark procedures. In our opinion, both aspects are not covered satisfactorily by existing freely accessible ECG datasets.</p><p>The PTB-XL ECG dataset is a large dataset of 21837 clinical 12-lead ECGs from 18885 patients of 10 second length. The raw waveform data was annotated by up to two cardiologists, who assigned potentially multiple ECG statements to each record. The in total 71 different ECG statements conform to the SCP-ECG standard and cover diagnostic, form, and rhythm statements. To ensure comparability of machine learning algorithms trained on the dataset, we provide recommended splits into training and test sets. In combination with the extensive annotation, this turns the dataset into a rich resource for the training and the evaluation of automatic ECG interpretation algorithms. The dataset is complemented by extensive metadata on demographics, infarction characteristics, likelihoods for diagnostic ECG statements as well as annotated signal properties.</p>",
+  "purpose": "<p>This dataset was created to support <strong>research and development of ECG-based diagnostic and machine-learning algorithms</strong>, by providing a large, well-annotated, publicly accessible set of clinical 12-lead ECGs. It also aims to enable benchmarking and reproducibility in ECG analysis.</p>",
+  "baseline": "<p>The baseline in this dataset pertains to the time of ECG recording.</p>",
+  "inclusionCriteria": "<p>Inclusion criteria for the dataset as described in Wagner et al. (2020) and PhysioNet:</p><ul><li><p>12-lead ECG recordings of approximately 10 seconds in length. </p></li><li><p>Clinical ECGs acquired by devices from Schiller AG between October 1989 and June 1996, at the Physikalisch‑Technische Bundesanstalt (PTB) project.</p></li><li><p>Sufficient metadata available for each record (patient id, ECG id, lead waveform files, diagnostic statements, demographics).</p></li><li><p>Records annotated via cardiologist review and/or automatic ECG-device interpretation, converted into SCP-ECG codes and enriched with structured metadata.</p></li></ul><p></p>",
+  "exclusionCriteria": "<p>While explicit exclusion criteria are not detailed for every case, users should note:</p>\n<ul>\n  <li>Records lacking 12-lead format, or not of approximately 10 seconds in length, may not be included.</li>\n  <li>Records without required metadata (ECG ID, patient ID, lead files, diagnostic labels) may be omitted.</li>\n  <li>Data quality issues: ECGs with unacceptable signal quality or missing annotations may have been excluded during curation.</li>\n</ul>",
+  "targets": "<p>The dataset supports multiple downstream modelling tasks rather than a single fixed target. Examples include:</p><ul><li><p><strong>Multi-label classification:</strong> using the provided SCP-ECG diagnostic statements (71 unique codes) to train classification models.</p></li><li><p><strong>Sub-class classification:</strong> separating ECGs into superclasses (e.g., NORM, MI, STTC, CD, HYP) and finer subclasses of myocardial infarction, conduction disturbances, hypertrophy. </p></li><li><p><strong>Regression or anomaly detection:</strong> using patient demographics, ECG morphology or axes to predict risk or detect abnormal ECG patterns.</p></li></ul><p></p>",
+  "studyDesign": "<p>This dataset arises from a retrospective observational study of clinical ECGs recorded over a long period, later curated and released for research.</p><ul><li><p><strong>Design:</strong> retrospective observational data collection from routine clinical ECGs.</p></li><li><p><strong>Population:</strong> patients who had 12-lead ECGs acquired in clinical practice by Schiller AG devices at PTB between 1989-1996. </p></li><li><p><strong>Data source:</strong> clinical ECG recordings with associated metadata, re-formatted and curated for public sharing.</p></li></ul><p></p>",
+  "temporalCoverage": {
+    "startDate": "1989-10-01",
+    "endDate": "1996-06-30"
+  },
+  "geographicCoverage": {
+    "geographicInfo": "<p>Germany (recordings acquired under the PTB project).</p>",
+    "geographicUnits": [
+      {
+        "countryCode": "DE",
+        "countrySubdivisionCodes": []
+      }
+    ]
+  },
+  "dataSampling": "<p>The dataset is a targeted clinical sample rather than a population-representative cohort. While the full recording frame spans 1989-1996 at PTB, the dataset includes those ECGs that had complete waveform and metadata suitable for public release.</p>",
+  "acquisitionMethods": "<h2>ECG signal acquisition</h2><p>The waves were recorded as follows:</p><ul><li><p>12-lead surface ECG: Leads I, II, III, aVL, aVR, aVF, V1–V6.</p></li><li><p>Devices: Schiller AG ECG devices between October 1989 and June 1996. </p></li><li><p>Recording specifics: Each ECG record is ~10 seconds in duration. </p></li><li><p>Sampling: Two data versions are provided: a high-resolution at 500 Hz and a down-sampled version at 100 Hz.</p></li><li><p>Metadata: For each ECG record fields include patient id, ECG id (ecg_id), patient age at time of ECG, sex, height (in ~32% of records), weight (~43%).</p></li></ul><p></p>",
+  "annotationMethods": "<p>Annotations were applied to the ECG data via a structured workflow:</p><ul><li><p>Original device-generated reports by ECG machine were captured and converted into structured labels. </p></li><li><p>Cardiologists reviewed a large fraction of the records and assigned SCP-ECG statements capturing diagnostic, form and rhythm aspects. </p></li><li><p>The annotation scheme uses 71 unique SCP-ECG codes mapped into categories: diagnostic (44 codes), form (19 codes), rhythm (12 codes). </p></li></ul><p></p>",
+  "limitations": "<p>Key limitations of the dataset include:</p><ul><li><p><strong>Temporal and device heterogeneity:</strong> Recordings were acquired over many years, with changing devices and protocols, possibly introducing variability.</p></li><li><p><strong>Demographic and clinical richness:</strong> While age and sex are provided, other demographic variables (height, weight) are only partially populated (height ~32%, weight ~43%). </p></li><li><p><strong>Recording length:</strong> All ECGs are ~10 seconds long, limiting long-term or continuous monitoring analyses.</p></li><li><p><strong>Single centre / device manufacturer bias:</strong> Data come from PTB using Schiller AG devices, which may limit generalisability.</p></li><li><p><strong>Fixed sampling durations:</strong> The short duration (10 s) may restrict detection of less frequent arrhythmias or intermittent phenomena.</p></li></ul><p></p>",
+  "dataPreprocessing": "<p>The data were subject to the following preprocessing for release:</p><ul><li><p>Conversion of raw data from proprietary formats into standard open formats (WFDB) with 16-bit precision and units of 1 µV/LSB. </p></li><li><p>Pseudo-anonymisation: Patient identifiers removed; date of birth replaced by age at time of ECG; ECG recording dates shifted by random offsets per patient to reduce risk of re-identification. </p></li><li><p>Generation of derived versions: down-sampled 100 Hz version (records100) and high-resolution 500 Hz version (records500).</p></li><li><p>Standardised metadata tables (e.g., ptbxl_database.csv, scp_statements.csv) providing patient, ECG, demographic and annotation fields. </p></li></ul><p></p>",
+  "healthcareSettings": [
+    "tertiary care"
+  ],
+  "patientNum": 18869,
+  "additionalDocumentation": [
+    {
+      "url": "https://doi.org/10.1038/s41597-020-0495-6",
+      "title": "PTB-XL: A Large Publicly Available ECG Dataset – Wagner et al. (2020)",
+      "description": "Scientific Data paper describing the dataset design, metadata, acquisition and annotation."
+    },
+    {
+      "url": "https://doi.org/10.13026/kfzx-aw45",
+      "title": "PTB-XL version 1.0.3 (PhysioNet) citation",
+      "description": "Version citation for the dataset as hosted on PhysioNet."
+    },
+    {
+      "url": "https://https://www.physionet.org/content/ptb-xl/1.0.1/",
+      "title": "PhysioNet Dataset Page: PTB-XL",
+      "description": "Official hosting page on PhysioNet with dataset files, metadata and usage instructions."
+    }
+  ],
+  "dataModalities": [
+    "time series",
+    "tabular"
+  ],
+  "dataFormats": [
+    {
+      "dataModality": "tabular",
+      "dataFormats": [
+        "TSV"
+      ]
+    },
+    {
+      "dataModality": "time series",
+      "dataFormats": [
+        "WFDB"
+      ]
+    }
+  ],
+  "privacyCompliance": "<p>Privacy measures include pseudo-anonymisation: patient identifiers removed, age rather than date of birth provided (age over 89 years may be coded as &gt;89), ECG recording dates are shifted by random offsets per patient to protect identity.</p>",
+  "ethicsApproval": [
+    {
+      "approved": "approved",
+      "approvalAuthority": "<p>Institutional Ethics Committee of PTB project (PTB-2020-1) – as reported in Scientific Data (Wagner et al. 2020)</p>",
+      "approvalNumber": "PTB-2020-1",
+      "approvalDetails": "<p>Ethics committee approval was obtained for the publication of the ECG source data in an open-access database (PTB-2020-1) as reported by the authors. </p>",
+      "approvalDate": null
+    }
+  ],
+  "patientConsent": "<p>The ECG recordings originate from routine clinical practice under the PTB project. Consent procedures were aligned with institutional approval for release of de-identified clinical ECG data for research.</p>",
+  "acknowledgements": "<p>The authors thank the many patients whose ECGs form the basis of the dataset, the data acquisition team at PTB, the device manufacturer Schiller AG, and contributors to the annotation and conversion workflow documented in Wagner et al. (2020).</p>",
+  "funding": "<p>Support for the PTB-XL dataset and its release was provided by the German Federal Ministry of Education and Research (BMBF) under grant 01 GO0 1206 and other institutional funding as described in the Scientific Data manuscript.</p>",
+  "owners": [
+    {
+      "name": "Physikalisch-Technische Bundesanstalt (PTB), Berlin, Germany",
+      "contactDetails": {
+        "firstName": "Patrick",
+        "lastName": "Wagner",
+        "email": null
+      }
+    }
+  ],
+  "doi": "10.13026/kfzx-aw45",
+  "howToCite": {
+    "instructions": "<p>Please cite both the dataset version and the original publication when using these data.</p>",
+    "citations": [
+      "Wagner, P., Strodthoff, N., Bousseljot, R.-D., Samek, W., & Schaeffter, T. (2022). PTB-XL: A large publicly available electrocardiography dataset (version 1.0.3). PhysioNet. doi:10.13026/kfzx-aw45.",
+      "Wagner, P., Strodthoff, N., Bousseljot, R.-D., Kreiseler, D., Lunze, F. I., Samek, W., & Schaeffer, T. (2020). PTB-XL: A large publicly available ECG dataset. Scientific Data, 7:154. doi:10.1038/s41597-020-0495-6."
+    ]
+  },
+  "references": "Wagner P, Strodthoff N, Bousseljot R-D, Samek W, Schaeffter T. PTB-XL: A large publicly available electrocardiography dataset. Scientific Data. 2020;7:154. doi:10.1038/s41597-020-0495-6.\n\nGoldberger A, Amaral L, Glass L, Hausdorff J, Ivanov P.C., Mark R., et al. PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals. Circulation (2000) 101(23):e215–e220.",
+  "modellingTasks": [
+    "classification",
+    "multi-label classification",
+    "clustering"
+  ],
+  "tags": [
+    "ECG",
+    "electrocardiography"
+  ],
+  "licence": {
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "title": "Creative Commons Attribution 4.0 International License (CC BY 4.0)",
+    "description": "The dataset is distributed under a CC BY 4.0 licence, allowing reuse with attribution. :contentReference[oaicite:31]{index=31}"
+  },
+  "versionInfo": null,
+  "dataSources": null
+}
